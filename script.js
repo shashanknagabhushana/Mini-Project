@@ -117,3 +117,24 @@ function clearAllData() {
         displayCandidates();
     }
 }
+function deleteCandidate(index) {
+    if (confirm("Delete this candidate?")) {
+        candidates.splice(index, 1);
+        saveData();
+        displayCandidates();
+    }
+}
+
+function editCandidate(index) {
+    const candidate = candidates[index];
+
+    document.getElementById("name").value = candidate.name;
+    document.getElementById("email").value = candidate.email;
+    document.getElementById("skills").value = candidate.skills;
+    document.getElementById("experience").value = candidate.experience;
+
+    candidates.splice(index, 1);
+
+    saveData();
+    displayCandidates();
+}
