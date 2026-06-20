@@ -2,14 +2,18 @@
 
 ## 📌 Project Overview
 
-The Resume Screening and Application Tracking System is a web-based application developed to assist recruiters in managing job applications efficiently. The system allows recruiters to add candidate details, evaluate resumes based on required skills, calculate a matching score, and track application status.
+The Resume Screening and Application Tracking System is a web-based recruitment management application designed to streamline the hiring process. It enables recruiters to store candidate information, evaluate resumes based on required skills, calculate matching scores, and track application status efficiently.
+
+## 🎯 Problem Statement
+
+Recruiters often receive a large number of resumes for a single job opening. Manual screening and tracking of applications is time-consuming, error-prone, and inefficient. This project aims to automate the initial screening process and simplify candidate management.
 
 ## 🎯 Objectives
 
-* Automate the resume screening process.
-* Reduce manual effort in candidate evaluation.
-* Track application status efficiently.
-* Provide a simple dashboard for recruitment analytics.
+* Automate resume screening based on skill matching.
+* Reduce recruiter workload and screening time.
+* Track candidate application status efficiently.
+* Provide recruitment analytics through a dashboard.
 
 ## 🚀 Features
 
@@ -18,52 +22,59 @@ The Resume Screening and Application Tracking System is a web-based application 
 * Screen candidates based on required skills.
 * Calculate skill match percentage.
 * Automatically shortlist or reject candidates.
-* Dashboard for recruitment analytics.
+* Dashboard showing:
+
+  * Total Applications
+  * Shortlisted Candidates
+  * Rejected Candidates
 * Clear all candidate records.
 
 ## 🛠️ Technologies Used
 
 * HTML5
 * CSS3
-* JavaScript
-* Local Storage
+* JavaScript (ES6)
+* Browser Local Storage
 
 ## 📂 Project Structure
 
-```text
 Mini-Project/
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
-```
 
 ## ⚙️ How to Run
 
 1. Download or clone the repository.
 2. Open the project folder.
-3. Open `index.html` in a web browser.
+3. Open `index.html` in any modern web browser.
 4. Add candidate details.
 5. Enter required skills.
 6. Click **Screen Candidates**.
+7. View candidate scores and application status.
 
 ## 📊 Workflow
 
-1. Add candidate details.
-2. Store candidate information.
-3. Enter required skills.
-4. Calculate match percentage.
-5. Shortlist or reject candidates.
-6. View dashboard statistics.
+1. Recruiter enters candidate details.
+2. Data is stored locally.
+3. Required skills are entered.
+4. Candidate skills are compared with required skills.
+5. Match percentage is calculated.
+6. Candidate is automatically categorized as:
+
+   * Shortlisted (≥70%)
+   * Rejected (<70%)
+7. Dashboard statistics are updated.
 
 ## 🔮 Future Enhancements
 
 * Resume PDF Upload
-* AI-Based Resume Ranking
+* AI-Based Resume Analysis
 * Database Integration
 * User Authentication
-* Interview Scheduling
-* Email Notifications
+* Interview Scheduling Module
+* Email Notification System
 
 ## 👨‍💻 Developer
 
