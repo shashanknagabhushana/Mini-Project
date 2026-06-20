@@ -83,3 +83,22 @@ Mini-Project/
 B.Tech Computer Science Engineering
 
 Mini Project Submission – 2026
+## 📸 Screenshots
+
+
+
+### Home Page
+
+![Home Page](home.png)
+
+
+
+### Candidate Management
+
+![Candidates](candidates.png)
+
+
+
+### Screening Results
+
+![Results](results.png)
