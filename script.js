@@ -70,7 +70,7 @@ function displayCandidates() {
 
     table.innerHTML = "";
 
-    candidates.forEach(candidate => {
+    candidates.forEach((candidate, index) => {
         table.innerHTML += `
             <tr>
                 <td>${candidate.name}</td>
@@ -79,13 +79,16 @@ function displayCandidates() {
                 <td>${candidate.experience}</td>
                 <td>${candidate.match}%</td>
                 <td>${candidate.status}</td>
+                <td>
+                    <button onclick="editCandidate(${index})">Edit</button>
+                    <button onclick="deleteCandidate(${index})">Delete</button>
+                </td>
             </tr>
         `;
     });
 
     updateDashboard();
 }
-
 function saveData() {
     localStorage.setItem(
         "candidates",
