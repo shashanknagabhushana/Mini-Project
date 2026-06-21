@@ -78,7 +78,16 @@ function displayCandidates() {
                 <td>${candidate.skills}</td>
                 <td>${candidate.experience}</td>
                 <td>${candidate.match}%</td>
-                <td>${candidate.status}</td>
+                <td><span class="${
+        candidate.status === 'Shortlisted'
+        ? 'badge-green'
+        : candidate.status === 'Rejected'
+        ? 'badge-red'
+        : 'badge-yellow'
+    }">
+        ${candidate.status}
+    </span>
+</td>
                 <td>
                     <button onclick="editCandidate(${index})">Edit</button>
                     <button onclick="deleteCandidate(${index})">Delete</button>
