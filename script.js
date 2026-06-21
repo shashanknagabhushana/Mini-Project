@@ -1,3 +1,4 @@
+console.log("SCRIPT LOADED");
 let candidates = JSON.parse(localStorage.getItem("candidates")) || [];
 
 displayCandidates();
