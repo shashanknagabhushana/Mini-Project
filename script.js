@@ -89,8 +89,29 @@ function displayCandidates() {
     </span>
 </td>
                 <td>
-                    <button onclick="editCandidate(${index})">Edit</button>
-                    <button onclick="deleteCandidate(${index})">Delete</button>
+                    .badge-green{
+    background:#dcfce7;
+    color:#15803d;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.badge-red{
+    background:#fee2e2;
+    color:#b91c1c;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:bold;
+}
+
+.badge-yellow{
+    background:#fef9c3;
+    color:#a16207;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:bold;
+}
                 </td>
             </tr>
         `;
