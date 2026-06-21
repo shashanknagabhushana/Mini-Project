@@ -240,25 +240,25 @@ function generateAIReport() {
     `;
 }
 
-document.getElementById("searchCandidate")
-.addEventListener("input", function () {
+const searchBox = document.getElementById("searchCandidate");
 
-    const search =
-        this.value.toLowerCase();
+if (searchBox) {
+    searchBox.addEventListener("input", function () {
 
-    const rows =
-        document.querySelectorAll(
+        const search = this.value.toLowerCase();
+
+        const rows = document.querySelectorAll(
             "#candidateTable tr"
         );
 
-    rows.forEach(row => {
+        rows.forEach(row => {
 
-        const text =
-            row.innerText.toLowerCase();
+            const text = row.innerText.toLowerCase();
 
-        row.style.display =
-            text.includes(search)
-                ? ""
-                : "none";
+            row.style.display =
+                text.includes(search)
+                    ? ""
+                    : "none";
+        });
     });
-});
+}
