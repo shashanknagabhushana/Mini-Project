@@ -3,197 +3,235 @@ let candidates = JSON.parse(localStorage.getItem("candidates")) || [];
 displayCandidates();
 
 function addCandidate() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const skills = document.getElementById("skills").value;
-    const experience = document.getElementById("experience").value;
+const name = document.getElementById("name").value;
+const email = document.getElementById("email").value;
+const skills = document.getElementById("skills").value;
+const experience = document.getElementById("experience").value;
 
-    if (!name || !email || !skills || !experience) {
-        alert("Please fill all fields");
-        return;
-    }
 
-    const candidate = {
-        name,
-        email,
-        skills,
-        experience,
-        match: 0,
-        status: "Applied"
-    };
+if (!name || !email || !skills || !experience) {
+    alert("Please fill all fields");
+    return;
+}
 
-    candidates.push(candidate);
+const candidate = {
+    name,
+    email,
+    skills,
+    experience,
+    match: 0,
+    status: "Applied"
+};
 
-    saveData();
-    displayCandidates();
+candidates.push(candidate);
 
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("skills").value = "";
-    document.getElementById("experience").value = "";
+saveData();
+displayCandidates();
+
+document.getElementById("name").value = "";
+document.getElementById("email").value = "";
+document.getElementById("skills").value = "";
+document.getElementById("experience").value = "";
+
+
 }
 
 function screenCandidates() {
-    const requiredSkills = document
-        .getElementById("requiredSkills")
-        .value
-        .toLowerCase()
-        .split(",");
+const requiredSkills = document
+.getElementById("requiredSkills")
+.value
+.toLowerCase()
+.split(",");
 
-    candidates.forEach(candidate => {
-        const candidateSkills = candidate.skills
-            .toLowerCase()
-            .split(",");
 
-        let matched = 0;
+candidates.forEach(candidate => {
 
-        requiredSkills.forEach(skill => {
-            if (candidateSkills.includes(skill.trim())) {
-                matched++;
-            }
-        });
+    const candidateSkills =
+        candidate.skills.toLowerCase().split(",");
 
-        candidate.match = Math.round(
-            (matched / requiredSkills.length) * 100
-        );
+    let matched = 0;
 
-        candidate.status =
-            candidate.match >= 70 ? "Shortlisted" : "Rejected";
+    requiredSkills.forEach(skill => {
+        if(candidateSkills.includes(skill.trim())){
+            matched++;
+        }
     });
+
+    candidate.match = Math.round(
+        (matched / requiredSkills.length) * 100
+    );
+
+    candidate.status =
+        candidate.match >= 70
+        ? "Shortlisted"
+        : "Rejected";
+
+});
+
+saveData();
+displayCandidates();
+
+
+}
+
+function displayCandidates() {
+
+
+const table =
+    document.getElementById("candidateTable");
+
+table.innerHTML = "";
+
+candidates.forEach((candidate,index) => {
+
+    let badgeClass = "badge-yellow";
+
+    if(candidate.status === "Shortlisted"){
+        badgeClass = "badge-green";
+    }
+    else if(candidate.status === "Rejected"){
+        badgeClass = "badge-red";
+    }
+
+    table.innerHTML += `
+    <tr>
+        <td>${candidate.name}</td>
+        <td>${candidate.email}</td>
+        <td>${candidate.skills}</td>
+        <td>${candidate.experience}</td>
+        <td>${candidate.match}%</td>
+
+        <td>
+            <span class="${badgeClass}">
+                ${candidate.status}
+            </span>
+        </td>
+
+        <td>
+            <button onclick="editCandidate(${index})">
+                ✏ Edit
+            </button>
+
+            <button onclick="deleteCandidate(${index})">
+                🗑 Delete
+            </button>
+        </td>
+    </tr>
+    ;
+});
+
+updateDashboard();
+
+
+}
+
+function saveData() {
+localStorage.setItem(
+"candidates",
+JSON.stringify(candidates)
+);
+}
+
+function updateDashboard() {
+
+
+document.getElementById("totalApps").innerText =
+    candidates.length;
+
+const shortlisted =
+    candidates.filter(
+        c => c.status === "Shortlisted"
+    ).length;
+
+const rejected =
+    candidates.filter(
+        c => c.status === "Rejected"
+    ).length;
+
+document.getElementById("shortlisted").innerText =
+    shortlisted;
+
+document.getElementById("rejected").innerText =
+    rejected;
+
+const rate =
+    candidates.length === 0
+    ? 0
+    : Math.round(
+        (shortlisted / candidates.length) * 100
+    );
+
+document.getElementById("successRate").innerText =
+    rate + "%";
+
+
+}
+
+function clearAllData() {
+
+
+if(confirm("Are you sure you want to delete all candidates?")){
+
+    candidates = [];
 
     saveData();
     displayCandidates();
 }
 
-function displayCandidates() {
-    const table = document.getElementById("candidateTable");
 
-    table.innerHTML = "";
-
-    candidates.forEach((candidate, index) => {
-        table.innerHTML += `
-            <tr>
-                <td>${candidate.name}</td>
-                <td>${candidate.email}</td>
-                <td>${candidate.skills}</td>
-                <td>${candidate.experience}</td>
-                <td>${candidate.match}%</td>
-                <td><span class="${
-        candidate.status === 'Shortlisted'
-        ? 'badge-green'
-        : candidate.status === 'Rejected'
-        ? 'badge-red'
-        : 'badge-yellow'
-    }">
-        ${candidate.status}
-    </span>
-</td>
-                <td>
-                    .badge-green{
-    background:#dcfce7;
-    color:#15803d;
-    padding:6px 12px;
-    border-radius:20px;
-    font-weight:bold;
 }
 
-.badge-red{
-    background:#fee2e2;
-    color:#b91c1c;
-    padding:6px 12px;
-    border-radius:20px;
-    font-weight:bold;
-}
-
-.badge-yellow{
-    background:#fef9c3;
-    color:#a16207;
-    padding:6px 12px;
-    border-radius:20px;
-    font-weight:bold;
-}
-                </td>
-            </tr>
-        `;
-    });
-
-    updateDashboard();
-}
-function saveData() {
-    localStorage.setItem(
-        "candidates",
-        JSON.stringify(candidates)
-    );
-}
-
-function updateDashboard() {
-    document.getElementById("totalApps").innerText =
-        candidates.length;
-
-    document.getElementById("shortlisted").innerText =
-        candidates.filter(
-            c => c.status === "Shortlisted"
-        ).length;
-
-    document.getElementById("rejected").innerText =
-        candidates.filter(
-            c => c.status === "Rejected"
-        ).length;
-    const shortlisted =
-candidates.filter(
-c => c.status === "Shortlisted"
-).length;
-
-const rate =
-candidates.length === 0
-? 0
-: Math.round(
-(shortlisted / candidates.length) * 100
-);
-
-document.getElementById(
-"successRate"
-).innerText = rate + "%";
-}
-function clearAllData() {
-    if (confirm("Are you sure you want to delete all candidates?")) {
-        candidates = [];
-        saveData();
-        displayCandidates();
-    }
-}
 function deleteCandidate(index) {
-    if (confirm("Delete this candidate?")) {
-        candidates.splice(index, 1);
-        saveData();
-        displayCandidates();
-    }
+
+if(confirm("Delete this candidate?")){
+
+    candidates.splice(index,1);
+
+    saveData();
+    displayCandidates();
+}
+
 }
 
 function editCandidate(index) {
-    const candidate = candidates[index];
 
-    document.getElementById("name").value = candidate.name;
-    document.getElementById("email").value = candidate.email;
-    document.getElementById("skills").value = candidate.skills;
-    document.getElementById("experience").value = candidate.experience;
 
-    candidates.splice(index, 1);
+const candidate = candidates[index];
 
-    saveData();
+document.getElementById("name").value =
+    candidate.name;
+
+document.getElementById("email").value =
+    candidate.email;
+
+document.getElementById("skills").value =
+    candidate.skills;
+
+document.getElementById("experience").value =
+    candidate.experience;
+
+candidates.splice(index,1);
+
+saveData();
+displayCandidates();
+
+}
+
 function generateAIReport() {
-
-```
 if(candidates.length === 0){
     alert("No candidates available");
     return;
 }
 
-let shortlisted =
-    candidates.filter(c => c.status === "Shortlisted").length;
+const shortlisted =
+    candidates.filter(
+        c => c.status === "Shortlisted"
+    ).length;
 
-let percentage =
-    Math.round((shortlisted / candidates.length) * 100);
+const percentage =
+    Math.round(
+        (shortlisted / candidates.length) * 100
+    );
 
 let recommendation = "";
 
@@ -212,46 +250,34 @@ else{
 
 document.getElementById("aiResult").innerHTML = `
     <h3>AI Recruitment Insight</h3>
-
-    <p><strong>Total Candidates:</strong>
-    ${candidates.length}</p>
-
-    <p><strong>Shortlisted:</strong>
-    ${shortlisted}</p>
-
-    <p><strong>Success Rate:</strong>
-    ${percentage}%</p>
-
-    <p><strong>Recommendation:</strong>
-    ${recommendation}</p>
-`;
-```
+    <p><strong>Total Candidates:</strong> ${candidates.length}</p>
+    <p><strong>Shortlisted:</strong> ${shortlisted}</p>
+    <p><strong>Success Rate:</strong> ${percentage}%</p>
+    <p><strong>Recommendation:</strong> ${recommendation}</p>
+;
 
 }
-    displayCandidates();
-}
-document
-.getElementById("searchCandidate")
-.addEventListener("input", function() {
 
-    const search =
+document.getElementById("searchCandidate")
+.addEventListener("input", function(){
+
+const search =
     this.value.toLowerCase();
 
-    const rows =
+const rows =
     document.querySelectorAll(
-    "#candidateTable tr"
+        "#candidateTable tr"
     );
 
-    rows.forEach(row => {
+rows.forEach(row => {
 
-        const text =
+    const text =
         row.innerText.toLowerCase();
 
-        row.style.display =
+    row.style.display =
         text.includes(search)
         ? ""
         : "none";
-
-    });
+});
 
 });
