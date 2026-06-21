@@ -177,3 +177,14 @@ line-height:1.8;
     border-radius:20px;
     font-weight:bold;
 }
+.edit-btn{
+    background:#2563eb;
+}
+
+.delete-btn{
+    background:#ef4444;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
