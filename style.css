@@ -183,3 +183,10 @@ text-align:center;
 margin-top:40px;
 color:#64748b;
 }
+.badge-blue{
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:6px 12px;
+    border-radius:20px;
+    font-weight:bold;
+}
