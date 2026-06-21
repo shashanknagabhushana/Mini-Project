@@ -230,3 +230,28 @@ document.getElementById("aiResult").innerHTML = `
 }
     displayCandidates();
 }
+document
+.getElementById("searchCandidate")
+.addEventListener("input", function() {
+
+    const search =
+    this.value.toLowerCase();
+
+    const rows =
+    document.querySelectorAll(
+    "#candidateTable tr"
+    );
+
+    rows.forEach(row => {
+
+        const text =
+        row.innerText.toLowerCase();
+
+        row.style.display =
+        text.includes(search)
+        ? ""
+        : "none";
+
+    });
+
+});
