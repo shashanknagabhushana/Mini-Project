@@ -269,3 +269,34 @@ if (searchBox) {
         });
     });
 }
+function downloadReport(){
+
+    let report =
+    "TalentAI Recruitment Report\n\n";
+
+    candidates.forEach(candidate => {
+
+        report +=
+        "Name: " + candidate.name + "\n" +
+        "Email: " + candidate.email + "\n" +
+        "Skills: " + candidate.skills + "\n" +
+        "Match: " + candidate.match + "%\n" +
+        "Status: " + candidate.status + "\n\n";
+
+    });
+
+    const blob =
+    new Blob([report],
+    {type:"text/plain"});
+
+    const link =
+    document.createElement("a");
+
+    link.href =
+    URL.createObjectURL(blob);
+
+    link.download =
+    "TalentAI_Report.txt";
+
+    link.click();
+}
