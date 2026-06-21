@@ -139,6 +139,21 @@ function updateDashboard() {
         candidates.filter(
             c => c.status === "Rejected"
         ).length;
+    const shortlisted =
+candidates.filter(
+c => c.status === "Shortlisted"
+).length;
+
+const rate =
+candidates.length === 0
+? 0
+: Math.round(
+(shortlisted / candidates.length) * 100
+);
+
+document.getElementById(
+"successRate"
+).innerText = rate + "%";
 }
 function clearAllData() {
     if (confirm("Are you sure you want to delete all candidates?")) {
