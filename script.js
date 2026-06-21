@@ -58,10 +58,15 @@ function screenCandidates() {
             (matched / requiredSkills.length) * 100
         );
 
-        candidate.status =
-            candidate.match >= 70
-                ? "Shortlisted"
-                : "Rejected";
+        if(candidate.match >= 80){
+    candidate.status = "Highly Recommended";
+}
+else if(candidate.match >= 70){
+    candidate.status = "Shortlisted";
+}
+else{
+    candidate.status = "Rejected";
+}
     });
 
     saveData();
@@ -79,13 +84,15 @@ function displayCandidates() {
 
         let badgeClass = "badge-yellow";
 
-        if (candidate.status === "Shortlisted") {
-            badgeClass = "badge-green";
-        }
-        else if (candidate.status === "Rejected") {
-            badgeClass = "badge-red";
-        }
-
+if(candidate.status === "Highly Recommended"){
+    badgeClass = "badge-blue";
+}
+else if(candidate.status === "Shortlisted"){
+    badgeClass = "badge-green";
+}
+else if(candidate.status === "Rejected"){
+    badgeClass = "badge-red";
+}
         table.innerHTML += `
         <tr>
             <td>${candidate.name}</td>
