@@ -300,3 +300,47 @@ function downloadReport(){
 
     link.click();
 }
+function downloadReport() {
+
+    let report = "TalentAI Recruitment Report\n";
+    report += "===========================\n\n";
+
+    report += "Total Candidates: " + candidates.length + "\n";
+
+    const shortlisted =
+        candidates.filter(c => c.status === "Shortlisted").length;
+
+    const rejected =
+        candidates.filter(c => c.status === "Rejected").length;
+
+    report += "Shortlisted: " + shortlisted + "\n";
+    report += "Rejected: " + rejected + "\n\n";
+
+    report += "Candidate Details\n";
+    report += "-----------------\n";
+
+    candidates.forEach(candidate => {
+
+        report +=
+            "Name: " + candidate.name + "\n" +
+            "Email: " + candidate.email + "\n" +
+            "Skills: " + candidate.skills + "\n" +
+            "Experience: " + candidate.experience + " Years\n" +
+            "Match: " + candidate.match + "%\n" +
+            "Status: " + candidate.status + "\n\n";
+
+    });
+
+    const blob = new Blob(
+        [report],
+        { type: "text/plain" }
+    );
+
+    const a = document.createElement("a");
+
+    a.href = URL.createObjectURL(blob);
+
+    a.download = "TalentAI_Report.txt";
+
+    a.click();
+}
