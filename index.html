@@ -1,16 +1,23 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Screening & Application Tracking System</title>
+    <title>TalentAI - Resume Screening System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Resume Screening & Application Tracking System</h1>
-        <div class="dashboard">
+<div class="container">
+
+```
+<header>
+    <h1>TalentAI</h1>
+    <p>Resume Screening & Application Tracking System</p>
+</header>
+
+<div class="dashboard">
     <div class="card">
         <h3>Total Applications</h3>
         <p id="totalApps">0</p>
@@ -26,73 +33,54 @@
         <p id="rejected">0</p>
     </div>
 </div>
-        <div class="form-section">
-            <h2>Add Candidate</h2>
 
-            <input type="text" id="name" placeholder="Candidate Name">
-            <input type="email" id="email" placeholder="Email">
-            <input type="text" id="skills" placeholder="Skills (comma separated)">
-            <input type="number" id="experience" placeholder="Experience (Years)">
+<div class="form-section">
+    <h2>Add Candidate</h2>
 
-            <button onclick="addCandidate()">Add Candidate</button>
-        </div>
+    <input type="text" id="name" placeholder="Candidate Name">
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="text" id="skills" placeholder="Skills (HTML, CSS, JavaScript)">
+    <input type="number" id="experience" placeholder="Experience (Years)">
 
-        <div class="screening-section">
-            <h2>Resume Screening</h2>
+    <button onclick="addCandidate()">Add Candidate</button>
+</div>
 
-            <input type="text" id="requiredSkills" placeholder="Required Skills (comma separated)">
-            <button onclick="screenCandidates()">Screen Candidates</button>
-            <button onclick="clearAllData()">Clear All Data</button>    
-        </div>
+<div class="screening-section">
+    <h2>Resume Screening</h2>
 
-        <h2>Candidate List</h2>
+    <input type="text" id="requiredSkills" placeholder="Required Skills">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Skills</th>
-                    <th>Experience</th>
-                    <th>Match %</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="candidateTable">
-            </tbody>
-        </table>
-    </div>
+    <button onclick="screenCandidates()">Screen Candidates</button>
+    <button onclick="clearAllData()">Clear All Data</button>
+</div>
 
-    <script src="script.js"></script>
-                <button onclick="screenCandidates()">Screen Candidates</button>
-        </div>
+<h2>Candidate List</h2>
 
-        <hr>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Skills</th>
+            <th>Experience</th>
+            <th>Match %</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
 
-        <h2>Candidates</h2>
+    <tbody id="candidateTable">
+    </tbody>
+</table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Skills</th>
-                    <th>Experience</th>
-                    <th>Match %</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
+<footer>
+    <p>Developed by P N Shashank | Mini Project 2026</p>
+</footer>
+```
 
-            <tbody id="candidateTable">
-            </tbody>
-        </table>
+</div>
 
-    </div>
+<script src="script.js"></script>
 
-    <script src="script.js"></script>
-
-</body>
-</html>
 </body>
 </html>
