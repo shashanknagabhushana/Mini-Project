@@ -136,5 +136,52 @@ function editCandidate(index) {
     candidates.splice(index, 1);
 
     saveData();
+function generateAIReport() {
+
+```
+if(candidates.length === 0){
+    alert("No candidates available");
+    return;
+}
+
+let shortlisted =
+    candidates.filter(c => c.status === "Shortlisted").length;
+
+let percentage =
+    Math.round((shortlisted / candidates.length) * 100);
+
+let recommendation = "";
+
+if(percentage >= 70){
+    recommendation =
+    "Strong candidate pool. Recommended for interviews.";
+}
+else if(percentage >= 40){
+    recommendation =
+    "Moderate candidate quality. Additional screening advised.";
+}
+else{
+    recommendation =
+    "Low matching rate. Consider expanding recruitment efforts.";
+}
+
+document.getElementById("aiResult").innerHTML = `
+    <h3>AI Recruitment Insight</h3>
+
+    <p><strong>Total Candidates:</strong>
+    ${candidates.length}</p>
+
+    <p><strong>Shortlisted:</strong>
+    ${shortlisted}</p>
+
+    <p><strong>Success Rate:</strong>
+    ${percentage}%</p>
+
+    <p><strong>Recommendation:</strong>
+    ${recommendation}</p>
+`;
+```
+
+}
     displayCandidates();
 }
