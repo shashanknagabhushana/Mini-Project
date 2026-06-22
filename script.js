@@ -160,6 +160,13 @@ function updateDashboard() {
 
     document.getElementById("successRate").innerText =
         rate + "%";
+    const applied =
+candidates.filter(
+c => c.status === "Applied"
+).length;
+
+document.getElementById("applied").innerText =
+applied;
 }
 
 function clearAllData() {
@@ -225,18 +232,22 @@ function generateAIReport() {
 
     let recommendation = "";
 
-    if (percentage >= 70) {
-        recommendation =
-            "Strong candidate pool. Recommended for interviews.";
-    }
-    else if (percentage >= 40) {
-        recommendation =
-            "Moderate candidate quality. Additional screening advised.";
-    }
-    else {
-        recommendation =
-            "Low matching rate. Consider expanding recruitment efforts.";
-    }
+    if(percentage >= 80){
+    recommendation =
+    "Excellent candidate pool. Immediate interview scheduling recommended.";
+}
+else if(percentage >= 60){
+    recommendation =
+    "Good candidate pool. Proceed with technical assessments.";
+}
+else if(percentage >= 40){
+    recommendation =
+    "Moderate candidate quality. Additional screening advised.";
+}
+else{
+    recommendation =
+    "Candidate pool quality is low. Consider expanding recruitment efforts.";
+}
 
     document.getElementById("aiResult").innerHTML = `
         <h3>AI Recruitment Insight</h3>
@@ -272,7 +283,7 @@ if (searchBox) {
 function downloadReport(){
 
     let report =
-    "TalentAI Recruitment Report\n\n";
+    " Recruitment Report\n\n";
 
     candidates.forEach(candidate => {
 
@@ -302,7 +313,7 @@ function downloadReport(){
 }
 function downloadReport() {
 
-    let report = "TalentAI Recruitment Report\n";
+    let report = " Recruitment Report\n";
     report += "===========================\n\n";
 
     report += "Total Candidates: " + candidates.length + "\n";
@@ -340,7 +351,29 @@ function downloadReport() {
 
     a.href = URL.createObjectURL(blob);
 
-    a.download = "TalentAI_Report.txt";
+    a.download = "Report.txt";
 
     a.click();
+}
+function filterCandidates(status){
+
+    const rows =
+    document.querySelectorAll("#candidateTable tr");
+
+    rows.forEach(row => {
+
+        if(status === "All"){
+            row.style.display = "";
+            return;
+        }
+
+        if(row.innerText.includes(status)){
+            row.style.display = "";
+        }
+        else{
+            row.style.display = "none";
+        }
+
+    });
+
 }
