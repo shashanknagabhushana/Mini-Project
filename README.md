@@ -76,9 +76,10 @@ Mini-Project/
 * Interview Scheduling Module
 * Email Notification System
 
-## 👨‍💻 Developer
-
+## 👨‍💻 Developers
+**Sana Iram M**
 **P N Shashank**
+**Sneha latha K**
 
 B.Tech Computer Science Engineering
 
