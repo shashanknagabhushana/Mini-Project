@@ -77,9 +77,9 @@ Mini-Project/
 * Email Notification System
 
 ## 👨‍💻 Developers
-**Sana Iram M**
-**P N Shashank**
-**Sneha latha K**
+**Sana Iram M
+P N Shashank
+Sneha latha K**
 
 B.Tech Computer Science Engineering
 
