@@ -89,16 +89,16 @@ Mini Project Submission – 2026
 
 ### Home Page
 
-![Home Page](home.png)
+![Home Page](Dashboard.png)
 
 
 
 ### Candidate Management
 
-![Candidates](candidates.png)
+![Candidates](candidate.png)
 
 
 
 ### Screening Results
 
-![Results](results.png)
+![Results](screening.png)
