@@ -71,11 +71,15 @@ https://shashanknagabhushana.github.io/Mini-Project/
 
 ## Project Files
 
-### Documentation
-📄 Documentation.pdf
+Documentation
+
+###
+
+[Download Documentation](./Documentation.pdf)
 
 ### Presentation
-📊 POWER POINT PRESENTATION.pptx
+
+[Download PowerPoint Presentation](./POWERPOINTPRESENTATION.pptx)
 
 ### Source Code
 - index.html
